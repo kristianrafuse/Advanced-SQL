@@ -9,12 +9,12 @@ from sqlalchemy import create_engine, func
 
 from flask import Flask, jsonify
 
-engine = create_engine("sqlite:///Resources/hawaii.sqlite")
+engine = create_engine("sqlite:///SurfsUp/Resources/hawaii.sqlite")
 Base = automap_base()
 Base.prepare(autoload_with=engine)
 
-# measurement = Base.classes.measurement
-# station = Base.classes.station
+measurement = Base.classes.measurement
+station = Base.classes.station
 
 #initialize flask app
 app = Flask(__name__)
@@ -37,6 +37,11 @@ def welcome():
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     session = Session(engine)
+    most_recent_datetime = datetime.strptime(most_recent_date, '%Y-%m-%d')
+    one_year_from_most_recent = most_recent_datetime - timedelta(days=365)
+
+    data = session.query(measurement.date, measurement.prcp).filter(measurement.date >= one_year_from_most_recent).all()
+    print(data)
     session.close()
 
 if __name__ == '__main__':
@@ -78,8 +83,6 @@ if __name__ == '__main__':
 #     session = Session(engine)
 
 #     session.close()
-
-
 
 # 1. /
 
