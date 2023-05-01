@@ -41,7 +41,7 @@ def welcome():
 
         f'For a specified start, returns the minimum, average, and maximum temperatures for all the dates greater than or equal to the start date.<br/><br/>'
 
-        f"Data available by selecting your start date and end date!: <a href='http://127.0.0.1:5000/api/v1.0/temp/2016-08-23/2016-11-31'>Start Date and End Date Range Query</a><br/><br/>"
+        f"Data available by selecting your start date and end date!: <a href='http://127.0.0.1:5000/api/v1.0/temp/2016-08-23/2016-11-30'>Start Date and End Date Range Query</a><br/><br/>"
 
         f"For a specified start date and end date, returns the minimum, average, and maximum temperatures for the dates from the start date to the end date, inclusive."
 )
